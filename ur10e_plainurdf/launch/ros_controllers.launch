@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find ur10e_plainurdf)/config/ros_controllers.yaml" command="load"/>
+
+  <!-- Load the controllers -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" ns="/ur10e_plainurdf" output="screen"
+            args="--namespace=/ur10e_plainurdf
+            joint_state_controller
+            manipulator_controller
+            --timeout 20"/>
+
+</launch>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="gazebo_gui" default="true"/>
+  <arg name="urdf_path" default="$(find ur10_e_moveit_config)/ur10e_with_robotiq_2f85/urdf/n_n_p_original.urdf"/>
+
+   <!--
+  <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
+  <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
+  <arg name="gui" default="true" doc="Starts gazebo gui" /> -->
+
+  <!-- startup simulated world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gazebo_gui)"/> <!-- <arg name="gui" value="$(arg gui)"/> -->
+  </include>
+
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" textfile="$(arg urdf_path)" />
+
+    <!-- send robot urdf to param server -->
+  <!-- <include file="$(find ur_e_description)/launch/ur10e_upload.launch">
+    <arg name="limited" value="$(arg limited)"/>
+  </include> -->
+
+  <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0 -y 0 -z 0"
+    respawn="false" output="screen" /> <!-- -z 0.1 -->
+
+  <include file="$(find ur10e_2f85_2)/launch/ros_controllers.launch"/>  <!-- <include file="$(find ur_e_gazebo)/launch/controller_utils.launch"/> -->
+
+</launch>
+
+
+
