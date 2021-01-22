@@ -3,7 +3,7 @@
   <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
   <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
   <arg name="gui" default="true" doc="Starts gazebo gui" />
-  <arg name="urdf_path" default="$(find ur10_e_moveit_config)/ur10e_with_robotiq_2f85/urdf/n_n_p_MA.urdf"/>
+  <arg name="urdf_path" default="$(find ur10_e_moveit_config)/ur10e_with_robotiq_2f85/urdf/2f85_optimised.urdf"/>
 
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
