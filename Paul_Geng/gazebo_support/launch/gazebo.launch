@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    
+  <!-- Load universal robot description format (URDF) -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find gazebo_support)/xacro/panda_arm_hand.urdf.xacro" />
+
+  
+
+<arg name="paused" default="true"/>
+<arg name="use_sim_time" default="true"/>
+<arg name="gui" default="true"/>
+<arg name="headless" default="false"/>
+<arg name="debug" default="false"/>
+
+<!--launch GAZEBO with own world configuration -->
+<include file="$(find gazebo_ros)/launch/empty_world.launch">
+	<arg name="debug" value="$(arg debug)"/>
+	<arg name="gui" value="$(arg gui)"/>
+	<arg name="paused" value="$(arg paused)"/>
+	<arg name="use_sim_time" value="$(arg use_sim_time)"/>
+	<arg name="headless" value="$(arg headless)"/>
+</include>
+
+<!-- Load joint controller configurations from YAML file to parameter server -->
+<rosparam file="$(find gazebo_support)/config/panda_control.yaml" command="load"/>
+
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description 
+	-urdf
+	-J panda_joint1 -0.41
+	-J panda_joint2 -0.67
+	-J panda_joint3 0.18
+	-J panda_joint4 -2.0
+	-J panda_joint5 0.22
+	-J panda_joint6 1.24
+	-J panda_joint7 -2.0
+	-model panda
+	-unpause"
+	respawn="false" output="screen"/>
+
+
+<!-- load the controllers -->
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" args="joint_state_controller panda_hand_controller panda_arm_controller" />
+
+    <!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /-->
+    <node name="robot_state_publisher_gazebo" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+    </node>
+<node name="joint_state_desired_publisher" pkg="topic_tools" type="relay" args="joint_states joint_states_desired" />
+
+</launch>
+
+
