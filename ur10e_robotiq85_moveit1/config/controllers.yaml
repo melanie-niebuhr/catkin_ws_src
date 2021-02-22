@@ -1,0 +1,19 @@
+controller_manager_ns: ''
+controller_list:
+  - name: manipulator_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - robot_shoulder_pan_joint
+      - robot_shoulder_lift_joint
+      - robot_elbow_joint
+      - robot_wrist_1_joint
+      - robot_wrist_2_joint
+      - robot_wrist_3_joint
+  - name: gripper_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - gripper_robotiq_85_left_knuckle_joint
