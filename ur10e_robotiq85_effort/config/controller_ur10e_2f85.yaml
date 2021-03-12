@@ -23,7 +23,7 @@ manipulator_controller:
 
 # Gripper controller
 gripper_controller:
-  type: position_controllers/GripperActionController
+  type: effort_controllers/GripperActionController
   joint: gripper_robotiq_85_left_knuckle_joint
   action_monitor_rate: 20
   goal_tolerance: 0.002
@@ -31,10 +31,8 @@ gripper_controller:
   stall_velocity_threshold: 0.001
   stall_timeout: 1.0
 
-# Joint state controller (publish joint states)
-joint_state_controller:
-  publish_rate: 125
-  type: joint_state_controller/JointStateController
+  gains:
+    gripper_robotiq_85_left_knuckle_joint: {p: 5.0, i: 1.0, d: 0.01, i_clamp: 1}
 
 joint_group_position_controller:
   type: position_controllers/JointGroupPositionController

@@ -2,7 +2,7 @@
 <launch>
   <arg name="paused" default="false"/>
   <arg name="gazebo_gui" default="true"/>
-  <arg name="urdf_path" default="$(find ur10_e_moveit_config)/ur10e_robotiq_85/urdf1/ur10e_robotiq85_hiwi.xacro"/>
+  <arg name="urdf_path" default="$(find ur10_e_moveit_config)/ur10e_robotiq85/urdf/ur10e_robotiq85_effort.urdf"/>
 
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -18,6 +18,6 @@
   <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model robot -x 0 -y 0 -z 0"
     respawn="false" output="screen" />
 
-  <include file="$(find ur10e_robotiq85_moveit2)/launch/ros_controllers.launch"/>
+  <include file="$(find ur10e_robotiq85_effort)/launch/ros_controllers.launch"/>
 
 </launch>

@@ -149,6 +149,7 @@ manipulator:
   projection_evaluator: joints(robot_shoulder_pan_joint,robot_shoulder_lift_joint)
   longest_valid_segment_fraction: 0.005
 gripper:
+  default_planner_config: RRT
   planner_configs:
     - SBL
     - EST
