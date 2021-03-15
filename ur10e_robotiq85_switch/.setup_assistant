@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: ur10_e_moveit_config
+    relative_path: ur10e_robotiq85/urdf/ur10e_robotiq85_switch.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/ur10e_robotiq.srdf
+  CONFIG:
+    author_name: melanie
+    author_email: melanie.niebuhr@tum.de
+    generated_timestamp: 1615820253
