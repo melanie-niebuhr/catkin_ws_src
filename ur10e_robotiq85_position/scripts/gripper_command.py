@@ -42,46 +42,26 @@ def set_gripper(value):
     return client.get_result()
 ## path & grasp planning with exact position values
 # close gripper (value=0.8)
-set_gripper(0.0)
+raw_input("Press Enter")
+set_gripper(0.62)
 
-rospy.sleep(2)
 
-# semi-open gripper (value=0.4)
-set_gripper(0.4)
+
 
 ## Manipulator pose
+raw_input("Press Enter")
 joint_goal = m_group.get_current_joint_values()
-joint_goal[0] = pi
+joint_goal[0] = 0
 joint_goal[1] = -pi/2
-joint_goal[2] = pi/3
-joint_goal[3] = -pi/2
-joint_goal[4] = pi/3
-joint_goal[5] = pi
+joint_goal[2] = pi/2
+joint_goal[3] = 0
+joint_goal[4] = 0
+joint_goal[5] = 0
 
 m_group.go(joint_goal, wait=True)
 m_group.stop()
 
-## path planning with predefined poses
-# put the manipulator in the elbow/home position
-m_group.set_named_target("home")
-plan1 = m_group.go()
-
-# open/close the gripper
-g_group.set_named_target("closed")
-plan2 = g_group.go()
-
 rospy.sleep(2)
-moveit_commander.roscpp_shutdown()
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+  <arg name="urdf_path" default="$(find ur10_e_moveit_config)/ur10e_robotiq85/urdf/ur10e_robotiq85_position.urdf"/>
+
+  <arg name="x" default="0"/>
+  <arg name="y" default="0"/>
+  <arg name="z" default="0"/>
+
+  <!-- send robot urdf to param server -->
+  <param name="robot_description" textfile="$(arg urdf_path)" />
+
+  <!-- push robot_description to factory and spawn robot in gazebo at the origin, change x,y,z arguments to spawn in a different position -->
+  <node name="spawn_gazebo_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+        args="-urdf -param robot_description -model robot -x $(arg x) -y $(arg y) -z $(arg z)"/>
+
+</launch>

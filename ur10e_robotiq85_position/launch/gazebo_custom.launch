@@ -1,5 +1,9 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <launch>
+  <!-- overwriting these args -->
+  <arg name="debug" default="false"/>
+  <arg name="pause" default="true"/>
+  <arg name="world" default="$(find my_simulations)/world/empty_world.world"/>
   <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
   <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
   <arg name="gui" default="true" doc="Starts gazebo gui" />
@@ -7,9 +11,11 @@
 
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" default="worlds/empty.world"/>
+    <arg name="world_name" value="$(arg world)"/>
+    <arg name="debug" value="$(arg debug)"/>
     <arg name="paused" value="$(arg paused)"/>
     <arg name="gui" value="$(arg gui)"/>
+    <arg name="use_sim_time" value="true"/>
   </include>
 
   <!-- send robot urdf to param server -->
