@@ -16,14 +16,14 @@
     <include>
       <uri>model://cafe_table</uri>
       <static>true</static>
-      <pose> -0.5 0.88 0 0 0 0</pose>
+      <pose> 0.35 0.71 0 0 0 0</pose>
     </include>
 
     <!-- My first model -->
     <include>
       <uri>model://t_primitiv</uri>
       <static>false</static>
-      <pose> 1.183628 0.42 0.01 0 0 0 </pose>
+      <pose> 0.5767 0.4765 0.855011 0 0 0 </pose>
     </include>
 
   </world>

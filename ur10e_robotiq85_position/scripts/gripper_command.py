@@ -42,26 +42,42 @@ def set_gripper(value):
     return client.get_result()
 ## path & grasp planning with exact position values
 # close gripper (value=0.8)
-raw_input("Press Enter")
-set_gripper(0.62)
+#raw_input("Press Enter")
+#set_gripper(0.61)
 
-
-
-
-## Manipulator pose
-raw_input("Press Enter")
+## Manipulator pose Home
 joint_goal = m_group.get_current_joint_values()
 joint_goal[0] = 0
 joint_goal[1] = -pi/2
 joint_goal[2] = pi/2
-joint_goal[3] = 0
+joint_goal[3] = -pi
 joint_goal[4] = 0
 joint_goal[5] = 0
 
 m_group.go(joint_goal, wait=True)
 m_group.stop()
 
-rospy.sleep(2)
+
+
+
+
+
+
+
+## Manipulator pose
+#raw_input("Press Enter")
+#joint_goal = m_group.get_current_joint_values()
+#joint_goal[0] = 0
+#joint_goal[1] = -pi/2
+#joint_goal[2] = pi/2
+#joint_goal[3] = 0
+#joint_goal[4] = 0
+#joint_goal[5] = 0
+
+#m_group.go(joint_goal, wait=True)
+#m_group.stop()
+
+#rospy.sleep(2)
 
 
 
