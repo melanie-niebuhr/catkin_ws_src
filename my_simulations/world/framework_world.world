@@ -23,8 +23,8 @@
     <include>
       <uri>model://t_object</uri>
       <static>false</static>
-      <!--<pose> 0.5767 0.4765 0.895004 0 0 0 </pose>-->
-      <pose> 0.567859 0.429339 0.895004 0 0 0 </pose> <!-- In Gripper -->
+      <pose> 0.577296 0.507444 0.87499 0 0 0 </pose>--> <!-- With flange -->
+      <!--<pose> 0.567859 0.429339 0.895004 0 0 0 </pose>--> <!-- In Gripper -->
     </include>
 
   </world>

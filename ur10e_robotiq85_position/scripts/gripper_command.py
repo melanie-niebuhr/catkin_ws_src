@@ -42,28 +42,31 @@ def set_gripper(value):
     return client.get_result()
 ## path & grasp planning with exact position values
 # close gripper (value=0.8)
-#raw_input("Press Enter")
-set_gripper(0.55)
 
-## Manipulator pose Home
-#joint_goal = m_group.get_current_joint_values()
-#joint_goal[0] = 0
-#joint_goal[1] = -pi/2
-#joint_goal[2] = pi/2
-#joint_goal[3] = -pi
-#joint_goal[4] = 0
-#joint_goal[5] = 0
+## path planning with predefined poses
+# put the manipulator in the elbow/home position
+m_group.set_named_target("home")
+plan1 = m_group.go()
 
-#m_group.go(joint_goal, wait=True)
-#m_group.stop()
+raw_input("Press Enter")
+set_gripper(0.54)
 
+raw_input("Press Enter")
+m_group.set_named_target("lift")
+plan2 = m_group.go()
 
+raw_input("Press Enter")
+m_group.set_named_target("rotate")
+plan3 = m_group.go()
 
+raw_input("Press Enter")
+m_group.set_named_target("lower")
+plan4 = m_group.go()
 
+raw_input("Press Enter")
+set_gripper(0.0)
 
-
-
-
+## path & grasp planning with exact position values
 ## Manipulator pose
 #raw_input("Press Enter")
 #joint_goal = m_group.get_current_joint_values()
