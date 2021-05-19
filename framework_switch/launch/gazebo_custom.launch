@@ -3,7 +3,7 @@
   <!-- overwriting these args -->
   <arg name="debug" default="false"/>
   <arg name="pause" default="true"/>
-  <arg name="world" default="$(find my_simulations)/world/empty_world.world"/>
+  <arg name="world" default="$(find my_simulations)/world/framework_world.world"/>
   <arg name="limited" default="false"  doc="If true, limits joint range [-PI, PI] on all joints." />
   <arg name="paused" default="false" doc="Starts gazebo in paused mode" />
   <arg name="gui" default="true" doc="Starts gazebo gui" />
