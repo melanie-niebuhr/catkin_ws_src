@@ -5,7 +5,7 @@
 			<!--<pose>0.904292 0.350478 0.865 0 0 1.57</pose>-->
 
 			<static>false</static>
-			<link name="link">
+			<link name="link0">
 				<inertial>
 					<mass>0.2</mass>
 					<inertia> <!-- interias are tricky to compute -->
