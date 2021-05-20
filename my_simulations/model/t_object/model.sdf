@@ -5,7 +5,7 @@
 	<static>false</static>
 	<link name="link0">
 		<inertial>
-			<mass>0.2</mass>
+			<mass>0.08</mass>
 			<inertia>
 				<ixx>2.1248e-04</ixx>
 				<ixy>0.0</ixy>
@@ -81,7 +81,7 @@
 			<static>false</static>
 			<link name="link1">
 				<inertial>
-					<mass>0.2</mass>
+					<mass>0.08</mass>
 					<inertia>
 						<ixx>2.1248e-04</ixx>
 						<ixy>0.0</ixy>
