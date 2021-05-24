@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <sdf version="1.5">
-<model name="model_cylinder">
+<model name="cable">
     <link name="link_0">
       <inertial>
         <mass>4.523894e-03</mass>
